@@ -1,6 +1,7 @@
 package com.techelevator.services;
 
 import com.techelevator.model.CatFact;
+import com.techelevator.util.BasicLogger;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.CatPic;
@@ -11,18 +12,12 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class RestCatPicService implements CatPicService {
 
-	private static final String API_BASE_URL = "https://teapi.netlify.app/api/cats/";
+	private static final String API_BASE_URL = "https://teapi.netlify.app/api/cats/pictures/random";
 	private final RestTemplate restTemplate = new RestTemplate();
 
 	@Override
 	public CatPic getPic() {
-		CatPic catPic = null;
-		try {
-			catPic = restTemplate.getForObject(API_BASE_URL + "pictures/random", CatPic.class);
-		} catch (RestClientResponseException | ResourceAccessException e) {
-		//	BasicLogger.log(e.getMessage());
-		}
-		return catPic;
+		return restTemplate.getForObject(API_BASE_URL, CatPic.class);
 	}
 
 }	
