@@ -20,7 +20,7 @@ public class RestCatPicService implements CatPicService {
 		try {
 			catPic = restTemplate.getForObject(API_BASE_URL + "pictures/random", CatPic.class);
 		} catch (RestClientResponseException | ResourceAccessException e) {
-			BasicLogger.log(e.getMessage());
+		//	BasicLogger.log(e.getMessage());
 		}
 		return catPic;
 	}

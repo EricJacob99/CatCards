@@ -18,9 +18,11 @@ public class RestCatFactService implements CatFactService {
 		CatFact catFact = null;
 		try {
 			catFact = restTemplate.getForObject(API_BASE_URL + "facts/random", CatFact.class);
+			System.out.println(catFact.getText());
 		} catch (RestClientResponseException | ResourceAccessException e) {
-			BasicLogger.log(e.getMessage());
+		//	BasicLogger.log(e.getMessage());
 		}
+
 		return catFact;
 	}
 
